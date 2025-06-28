@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5AF129AC-D6C2-418D-AF5D-8A3F2F477862}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\eviecox\\source\\repos\\restapicourse\\moviesapi\\controllers\\moviescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AF129AC-D6C2-418D-AF5D-8A3F2F477862}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\controllers\\moviescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AF129AC-D6C2-418D-AF5D-8A3F2F477862}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\eviecox\\source\\repos\\restapicourse\\moviesapi\\mapping\\contractmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AF129AC-D6C2-418D-AF5D-8A3F2F477862}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\mapping\\contractmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AF129AC-D6C2-418D-AF5D-8A3F2F477862}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\eviecox\\source\\repos\\restapicourse\\moviesapi\\apiendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AF129AC-D6C2-418D-AF5D-8A3F2F477862}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\apiendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5AF129AC-D6C2-418D-AF5D-8A3F2F477862}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\eviecox\\source\\repos\\restapicourse\\moviesapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5AF129AC-D6C2-418D-AF5D-8A3F2F477862}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -121,12 +133,47 @@
               "Name": "ST:1711433440:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApiEndpoints.cs",
+              "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\ApiEndpoints.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\ApiEndpoints.cs",
+              "ToolTip": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\ApiEndpoints.cs",
+              "RelativeToolTip": "MoviesAPI\\ApiEndpoints.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T17:05:09.029Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ContractMapping.cs",
+              "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\Mapping\\ContractMapping.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Mapping\\ContractMapping.cs",
+              "ToolTip": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\Mapping\\ContractMapping.cs",
+              "RelativeToolTip": "MoviesAPI\\Mapping\\ContractMapping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T17:02:34.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MoviesController.cs",
+              "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\Controllers\\MoviesController.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Controllers\\MoviesController.cs",
+              "ToolTip": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\Controllers\\MoviesController.cs",
+              "RelativeToolTip": "MoviesAPI\\Controllers\\MoviesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T16:50:26.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ServiceCollectionsExtensions.cs",
               "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesApplication\\ServiceCollectionsExtensions.cs",
               "RelativeDocumentMoniker": "MoviesApplication\\ServiceCollectionsExtensions.cs",
@@ -139,7 +186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\Program.cs",
               "RelativeDocumentMoniker": "MoviesAPI\\Program.cs",
@@ -152,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Movie.cs",
               "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesApplication\\Models\\Movie.cs",
               "RelativeDocumentMoniker": "MoviesApplication\\Models\\Movie.cs",
@@ -164,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "MovieRepository.cs",
               "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesApplication\\Repositories\\Internal\\MovieRepository.cs",
               "RelativeDocumentMoniker": "MoviesApplication\\Repositories\\Internal\\MovieRepository.cs",
@@ -176,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "IMovieRepository.cs",
               "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesApplication\\Repositories\\IMovieRepository.cs",
               "RelativeDocumentMoniker": "MoviesApplication\\Repositories\\IMovieRepository.cs",
@@ -188,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "MoviesResponse.cs",
               "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesContracts\\Responses\\MoviesResponse.cs",
               "RelativeDocumentMoniker": "MoviesContracts\\Responses\\MoviesResponse.cs",
@@ -200,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "MovieResponse.cs",
               "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesContracts\\Responses\\MovieResponse.cs",
               "RelativeDocumentMoniker": "MoviesContracts\\Responses\\MovieResponse.cs",
@@ -212,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "UpdateMovieRequest.cs",
               "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesContracts\\Requests\\UpdateMovieRequest.cs",
               "RelativeDocumentMoniker": "MoviesContracts\\Requests\\UpdateMovieRequest.cs",
@@ -224,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "CreateMovieRequest.cs",
               "DocumentMoniker": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesContracts\\Requests\\CreateMovieRequest.cs",
               "RelativeDocumentMoniker": "MoviesContracts\\Requests\\CreateMovieRequest.cs",

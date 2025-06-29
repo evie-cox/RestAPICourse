@@ -536,11 +536,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\MoviesAPI.csproj",
+      "projectUniqueName": "C:\\Users\\EvieCox\\RiderProjects\\RestAPICourse\\MoviesAPI\\MoviesAPI.csproj",
       "projectName": "MoviesAPI",
-      "projectPath": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\MoviesAPI.csproj",
+      "projectPath": "C:\\Users\\EvieCox\\RiderProjects\\RestAPICourse\\MoviesAPI\\MoviesAPI.csproj",
       "packagesPath": "C:\\Users\\EvieCox\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\obj\\",
+      "outputPath": "C:\\Users\\EvieCox\\RiderProjects\\RestAPICourse\\MoviesAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -561,11 +561,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesApplication\\MoviesApplication.csproj": {
-              "projectPath": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesApplication\\MoviesApplication.csproj"
+            "C:\\Users\\EvieCox\\RiderProjects\\RestAPICourse\\MoviesApplication\\MoviesApplication.csproj": {
+              "projectPath": "C:\\Users\\EvieCox\\RiderProjects\\RestAPICourse\\MoviesApplication\\MoviesApplication.csproj"
             },
-            "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesContracts\\MoviesContracts.csproj": {
-              "projectPath": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesContracts\\MoviesContracts.csproj"
+            "C:\\Users\\EvieCox\\RiderProjects\\RestAPICourse\\MoviesContracts\\MoviesContracts.csproj": {
+              "projectPath": "C:\\Users\\EvieCox\\RiderProjects\\RestAPICourse\\MoviesContracts\\MoviesContracts.csproj"
             }
           }
         }

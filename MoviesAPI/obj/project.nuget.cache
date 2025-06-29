@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j3/Kdk2LwiM=",
+  "dgSpecHash": "19Mk2AcZH+Q=",
   "success": true,
-  "projectFilePath": "C:\\Users\\EvieCox\\source\\repos\\RestAPICourse\\MoviesAPI\\MoviesAPI.csproj",
+  "projectFilePath": "C:\\Users\\EvieCox\\RiderProjects\\RestAPICourse\\MoviesAPI\\MoviesAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\EvieCox\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\EvieCox\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.0-preview.5.25277.114\\microsoft.extensions.dependencyinjection.abstractions.10.0.0-preview.5.25277.114.nupkg.sha512",

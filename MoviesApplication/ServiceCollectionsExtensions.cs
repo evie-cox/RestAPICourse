@@ -2,6 +2,8 @@
 using MoviesApplication.Database;
 using MoviesApplication.Repositories;
 using MoviesApplication.Repositories.Internal;
+using MoviesApplication.Services;
+using MoviesApplication.Services.Internal;
 
 namespace MoviesApplication
 {
@@ -11,6 +13,7 @@ namespace MoviesApplication
         {
             // Singleton - instantiated only once and shared across the entire application for the lifetime of the application
             services.AddSingleton<IMovieRepository, MovieRepository>();
+            services.AddSingleton<IMovieService, MovieService>();
             return services;
         }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using MoviesApplication.Database;
 using MoviesApplication.Repositories;
 using MoviesApplication.Repositories.Internal;
@@ -14,6 +15,7 @@ namespace MoviesApplication
             // Singleton - instantiated only once and shared across the entire application for the lifetime of the application
             services.AddSingleton<IMovieRepository, MovieRepository>();
             services.AddSingleton<IMovieService, MovieService>();
+            services.AddValidatorsFromAssemblyContaining<IApplicationMarker>(ServiceLifetime.Singleton);
             return services;
         }
 

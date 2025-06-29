@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MoviesAPI.Auth;
 using MoviesAPI.Mapping;
 using MoviesApplication.Models;
 using MoviesApplication.Services;
@@ -36,9 +37,11 @@ namespace MoviesAPI.Controllers
             [FromRoute] string idOrSlug,
             CancellationToken cancellationToken)
         {
-            var movie = Guid.TryParse(idOrSlug, out var id)
-                ? await _movieService.GetByIdAsync(id, cancellationToken)
-                : await _movieService.GetBySlugAsync(idOrSlug, cancellationToken);
+            var userId = HttpContext.GetUserId();
+            
+            Movie? movie = Guid.TryParse(idOrSlug, out var id)
+                ? await _movieService.GetByIdAsync(id, userId, cancellationToken)
+                : await _movieService.GetBySlugAsync(idOrSlug, userId, cancellationToken);
 
             if (movie is null)
             {
@@ -53,7 +56,9 @@ namespace MoviesAPI.Controllers
         public async Task<IActionResult> GetAll(
             CancellationToken cancellationToken)
         {
-            IEnumerable<Movie> movies = await _movieService.GetAllAsync(cancellationToken);
+            var userId = HttpContext.GetUserId();
+            
+            IEnumerable<Movie> movies = await _movieService.GetAllAsync(userId, cancellationToken);
 
             MoviesResponse moviesReponse = movies.MapToResponse();
 
@@ -67,9 +72,11 @@ namespace MoviesAPI.Controllers
             [FromBody] UpdateMovieRequest request,
             CancellationToken cancellationToken)
         {
+            var userId = HttpContext.GetUserId();
+            
             Movie movie = request.MapToMovie(id);
 
-            Movie? updatedMovie = await _movieService.UpdateAsync(movie, cancellationToken);
+            Movie? updatedMovie = await _movieService.UpdateAsync(movie, userId, cancellationToken);
 
             if (updatedMovie is null)
             {

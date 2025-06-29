@@ -1,4 +1,4 @@
-namespace MoviesAPI;
+namespace MoviesAPI.Auth;
 
 public static class AuthConstants
 {

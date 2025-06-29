@@ -104,7 +104,6 @@ namespace MoviesApplication.Repositories.Internal
             using var connection = await _dbConnectionFactory.CreateConnectionAsync(cancellationToken);
 
             var result = await connection.QueryAsync(new CommandDefinition(commandText:"""
-                                                                            select * from movies", cancellationToken: cancellationToken));
                                                                             select m.*, string_agg(g.name, ',') as genres
                                                                             from movies m left join genres g on m.id = g.movieId
                                                                             group by id

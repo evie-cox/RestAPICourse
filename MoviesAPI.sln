@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesApplication", "Movies
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesContracts", "MoviesContracts\MoviesContracts.csproj", "{DA8E1B7C-F9B1-4DB5-92FC-4BFA807A07DC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{0DDDCC9E-C514-45FB-B076-A1E2B5F459AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityAPI", "IdentityAPI\IdentityAPI.csproj", "{0F47DA96-BB6E-45CA-BDDF-BC871FCE120D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,11 +31,18 @@ Global
 		{DA8E1B7C-F9B1-4DB5-92FC-4BFA807A07DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA8E1B7C-F9B1-4DB5-92FC-4BFA807A07DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA8E1B7C-F9B1-4DB5-92FC-4BFA807A07DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F47DA96-BB6E-45CA-BDDF-BC871FCE120D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F47DA96-BB6E-45CA-BDDF-BC871FCE120D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F47DA96-BB6E-45CA-BDDF-BC871FCE120D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F47DA96-BB6E-45CA-BDDF-BC871FCE120D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {13AEDC80-E2FD-4B08-AE50-E89B46B6DD91}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0F47DA96-BB6E-45CA-BDDF-BC871FCE120D} = {0DDDCC9E-C514-45FB-B076-A1E2B5F459AF}
 	EndGlobalSection
 EndGlobal

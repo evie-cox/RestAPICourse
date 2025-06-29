@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MoviesAPI.Mapping;
 using MoviesApplication.Models;
 using MoviesApplication.Services;
@@ -7,6 +8,7 @@ using MoviesContracts.Responses;
 
 namespace MoviesAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     public class MoviesController : ControllerBase
     {
@@ -29,6 +31,7 @@ namespace MoviesAPI.Controllers
             return CreatedAtAction(nameof(Get), new { idOrSlug = movie.Id }, movie);
         }
 
+        [AllowAnonymous]
         [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(Get))]
         public async Task<IActionResult> Get(
             [FromRoute] string idOrSlug,

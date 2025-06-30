@@ -64,8 +64,10 @@ namespace MoviesAPI.Controllers
                 .WithUser(userId);
             
             IEnumerable<Movie> movies = await _movieService.GetAllAsync(options, cancellationToken);
+            
+            int movieCount = await _movieService.GetCountAsync(options.Title, options.YearOfRelease, cancellationToken);
 
-            MoviesResponse moviesReponse = movies.MapToResponse();
+            MoviesResponse moviesReponse = movies.MapToResponse(request.PageNumber, request.PageSize, movieCount);
 
             return Ok(moviesReponse);
         }

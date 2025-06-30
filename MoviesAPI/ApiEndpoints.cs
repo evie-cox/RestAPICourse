@@ -20,7 +20,7 @@
 
             public const string Rate = $"{Base}/{{id:guid}}/ratings";
             
-            public const string DeleteRaing = $"{Base}/{{id:guid}}/ratings";
+            public const string DeleteRating = $"{Base}/{{id:guid}}/ratings";
         }
 
         public static class Ratings

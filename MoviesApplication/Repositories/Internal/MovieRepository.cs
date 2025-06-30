@@ -85,7 +85,7 @@ namespace MoviesApplication.Repositories.Internal
                                       select m.*, round(avg(r.rating), 1) as rating, myr.rating as userrating
                                       from movies m 
                                       left join ratings r on m.Id = r.MovieId
-                                      left join ratings myr on r.Id = myr.MovieId
+                                      left join ratings myr on m.Id = myr.MovieId
                                         and myr.userId = @userId
                                       where slug = @slug
                                       group by id, userrating
@@ -136,8 +136,8 @@ namespace MoviesApplication.Repositories.Internal
                 Title = x.title,
                 YearOfRelease = x.yearofrelease,
                 Genres = Enumerable.ToList(x.genres.Split(',')),
-                Rating = (float?)x.Rating,
-                UserRating = (int?)x.userRating,
+                Rating = (float?)x.rating,
+                UserRating = (int?)x.userrating,
             });
         }
 

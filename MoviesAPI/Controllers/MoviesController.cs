@@ -54,11 +54,16 @@ namespace MoviesAPI.Controllers
         
         [HttpGet(ApiEndpoints.Movies.GetAll, Name = nameof(GetAll))]
         public async Task<IActionResult> GetAll(
+            [FromQuery] GetAllMoviesRequest request,
             CancellationToken cancellationToken)
         {
             Guid? userId = HttpContext.GetUserId();
+
+            var options = request
+                .MapToOptions()
+                .WithUser(userId);
             
-            IEnumerable<Movie> movies = await _movieService.GetAllAsync(userId, cancellationToken);
+            IEnumerable<Movie> movies = await _movieService.GetAllAsync(options, cancellationToken);
 
             MoviesResponse moviesReponse = movies.MapToResponse();
 

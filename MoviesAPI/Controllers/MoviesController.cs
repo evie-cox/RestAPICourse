@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MoviesAPI.Auth;
 using MoviesAPI.Mapping;
@@ -35,6 +36,7 @@ namespace MoviesAPI.Controllers
         [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(Get))]
         public async Task<IActionResult> Get(
             [FromRoute] string idOrSlug,
+            [FromServices] LinkGenerator linkGenerator,
             CancellationToken cancellationToken)
         {
             Guid? userId = HttpContext.GetUserId();
@@ -49,6 +51,29 @@ namespace MoviesAPI.Controllers
             }
 
             MovieResponse response = movie.MapToResponse();
+            
+            var movieObj = new { id = movie.Id };
+            response.Links.Add(new Link()
+            {
+                Href = linkGenerator.GetPathByRouteValues(HttpContext, nameof(Get), values: new { idOrSlug = movie.Id }),
+                Rel = "self",
+                Type = "GET"
+            });
+            
+            response.Links.Add(new Link()
+            {
+                Href = linkGenerator.GetPathByRouteValues(HttpContext, nameof(Update), values: movieObj),
+                Rel = "self",
+                Type = "PUT"
+            });
+            
+            response.Links.Add(new Link()
+            {
+                Href = linkGenerator.GetPathByRouteValues(HttpContext, nameof(Delete), values: movieObj),
+                Rel = "self",
+                Type = "DELETE"
+            });
+            
             return Ok(response);
         }
         

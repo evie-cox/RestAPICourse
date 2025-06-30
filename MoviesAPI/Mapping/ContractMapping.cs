@@ -49,5 +49,15 @@ namespace MoviesAPI.Mapping
                 Movies = movies.Select(MapToResponse)
             };
         }
+
+        public static IEnumerable<MovieRatingResponse> MapToResponse(this IEnumerable<MovieRating> movieRatings)
+        {
+            return movieRatings.Select(x => new MovieRatingResponse
+            {
+                Rating = x.Rating,
+                Slug = x.Slug,
+                MovieId = x.MovieId,
+            });
+        }
     }
 }

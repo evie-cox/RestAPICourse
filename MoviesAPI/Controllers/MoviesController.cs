@@ -37,7 +37,7 @@ namespace MoviesAPI.Controllers
             [FromRoute] string idOrSlug,
             CancellationToken cancellationToken)
         {
-            var userId = HttpContext.GetUserId();
+            Guid? userId = HttpContext.GetUserId();
             
             Movie? movie = Guid.TryParse(idOrSlug, out var id)
                 ? await _movieService.GetByIdAsync(id, userId, cancellationToken)
@@ -56,7 +56,7 @@ namespace MoviesAPI.Controllers
         public async Task<IActionResult> GetAll(
             CancellationToken cancellationToken)
         {
-            var userId = HttpContext.GetUserId();
+            Guid? userId = HttpContext.GetUserId();
             
             IEnumerable<Movie> movies = await _movieService.GetAllAsync(userId, cancellationToken);
 
@@ -72,7 +72,7 @@ namespace MoviesAPI.Controllers
             [FromBody] UpdateMovieRequest request,
             CancellationToken cancellationToken)
         {
-            var userId = HttpContext.GetUserId();
+            Guid? userId = HttpContext.GetUserId();
             
             Movie movie = request.MapToMovie(id);
 
@@ -94,7 +94,7 @@ namespace MoviesAPI.Controllers
             [FromRoute] Guid id,
             CancellationToken cancellationToken)
         {
-            var deleted = await _movieService.DeleteByIdAsync(id, cancellationToken);
+            bool deleted = await _movieService.DeleteByIdAsync(id, cancellationToken);
 
             if (!deleted)
             {

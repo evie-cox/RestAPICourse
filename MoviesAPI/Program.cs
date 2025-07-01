@@ -3,7 +3,6 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using MoviesAPI;
 using MoviesAPI.Auth;
 using MoviesAPI.Health;
 using MoviesAPI.Mapping;
@@ -15,6 +14,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 
+// Add services to the container.
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -47,7 +47,8 @@ builder.Services.AddAuthorization(x =>
             c.User.HasClaim(m => m is { Type: AuthConstants.TrustedMemberClaimName, Value: "true" })));
 });
 
-// Add services to the container.
+builder.Services.AddScoped<ApiKeyAuthFilter>();
+
 builder.Services
     .AddApiVersioning(x =>
         {

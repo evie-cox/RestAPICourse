@@ -1,5 +1,4 @@
-﻿using System.Net;
-using Asp.Versioning;
+﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -28,7 +27,8 @@ namespace MoviesAPI.Controllers.V1
             _outputCacheStore = outputCacheStore;
         }
 
-        [Authorize(AuthConstants.TrustedMemberPolicyName)]
+        //[Authorize(AuthConstants.TrustedMemberPolicyName)]
+        [ServiceFilter(typeof(ApiKeyAuthFilter))]
         [HttpPost(ApiEndpoints.Movies.Create, Name = nameof(Create))]
         [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ValidationFailureResponse), StatusCodes.Status400BadRequest)]

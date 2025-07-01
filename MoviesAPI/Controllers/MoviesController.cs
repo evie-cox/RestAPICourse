@@ -40,6 +40,7 @@ namespace MoviesAPI.Controllers.V1
         
         [MapToApiVersion(1.0)]
         [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(GetV1))]
+        [ResponseCache(Duration = 30, VaryByHeader = "Accept, Accept-Encoding", Location = ResponseCacheLocation.Any)]
         [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetV1(
@@ -87,6 +88,7 @@ namespace MoviesAPI.Controllers.V1
         
         [MapToApiVersion(2.0)]
         [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(GetV2))]
+        [ResponseCache(Duration = 30, VaryByHeader = "Accept, Accept-Encoding", Location = ResponseCacheLocation.Any)]
         [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetV2(
@@ -111,6 +113,10 @@ namespace MoviesAPI.Controllers.V1
         }
         
         [HttpGet(ApiEndpoints.Movies.GetAll, Name = nameof(GetAll))]
+        [ResponseCache(Duration = 30,
+                       VaryByQueryKeys = new[] { "title", "yearOfRelease", "sortBy", "pageNumber", "pageSize" },
+                       VaryByHeader = "Accept, Accept-Encoding",
+                       Location = ResponseCacheLocation.Any)]
         [ProducesResponseType(typeof(MoviesResponse), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll(
             [FromQuery] GetAllMoviesRequest request,

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MoviesAPI;
 using MoviesAPI.Auth;
+using MoviesAPI.Health;
 using MoviesAPI.Mapping;
 using MoviesAPI.Swagger;
 using MoviesApplication;
@@ -60,6 +61,9 @@ builder.Services
 
 builder.Services.AddControllers();
 
+builder.Services.AddHealthChecks()
+    .AddCheck<DatabaseHealthCheck>(DatabaseHealthCheck.Name);
+
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
 builder.Services.AddSwaggerGen(x => x.OperationFilter<SwaggerDefaultValues>()); // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -81,6 +85,8 @@ if (app.Environment.IsDevelopment())
         }
     });
 }
+
+app.MapHealthChecks("_health"); // Makes this more of a meta endpoint in the API, it's concerned with the service itself, rather than the domain of the service
 
 app.UseHttpsRedirection();
 

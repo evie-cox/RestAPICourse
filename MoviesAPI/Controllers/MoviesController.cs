@@ -2,6 +2,7 @@
 using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using MoviesAPI.Auth;
 using MoviesAPI.Mapping;
 using MoviesApplication.Models;
@@ -17,10 +18,14 @@ namespace MoviesAPI.Controllers.V1
     public class MoviesController : ControllerBase
     {
         private readonly IMovieService _movieService;
+        private readonly IOutputCacheStore _outputCacheStore;
 
-        public MoviesController(IMovieService movieService)
+        public MoviesController(
+            IMovieService movieService,
+            IOutputCacheStore outputCacheStore)
         {
             _movieService = movieService;
+            _outputCacheStore = outputCacheStore;
         }
 
         [Authorize(AuthConstants.TrustedMemberPolicyName)]
@@ -35,12 +40,15 @@ namespace MoviesAPI.Controllers.V1
 
             await _movieService.CreateAsync(movie);
 
+            await _outputCacheStore.EvictByTagAsync("movies", cancellationToken);
+            
             return CreatedAtAction(nameof(Create), new { idOrSlug = movie.Id }, movie);
         }
         
         [MapToApiVersion(1.0)]
         [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(GetV1))]
-        [ResponseCache(Duration = 30, VaryByHeader = "Accept, Accept-Encoding", Location = ResponseCacheLocation.Any)]
+        [OutputCache(PolicyName = "MovieCache")]
+        //[ResponseCache(Duration = 30, VaryByHeader = "Accept, Accept-Encoding", Location = ResponseCacheLocation.Any)]
         [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetV1(
@@ -88,7 +96,7 @@ namespace MoviesAPI.Controllers.V1
         
         [MapToApiVersion(2.0)]
         [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(GetV2))]
-        [ResponseCache(Duration = 30, VaryByHeader = "Accept, Accept-Encoding", Location = ResponseCacheLocation.Any)]
+        //[ResponseCache(Duration = 30, VaryByHeader = "Accept, Accept-Encoding", Location = ResponseCacheLocation.Any)]
         [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetV2(
@@ -113,10 +121,11 @@ namespace MoviesAPI.Controllers.V1
         }
         
         [HttpGet(ApiEndpoints.Movies.GetAll, Name = nameof(GetAll))]
-        [ResponseCache(Duration = 30,
-                       VaryByQueryKeys = new[] { "title", "yearOfRelease", "sortBy", "pageNumber", "pageSize" },
-                       VaryByHeader = "Accept, Accept-Encoding",
-                       Location = ResponseCacheLocation.Any)]
+        [OutputCache(PolicyName = "MovieCache")]
+        //[ResponseCache(Duration = 30,
+        //               VaryByQueryKeys = new[] { "title", "yearOfRelease", "sortBy", "pageNumber", "pageSize" },
+        //               VaryByHeader = "Accept, Accept-Encoding",
+        //               Location = ResponseCacheLocation.Any)]
         [ProducesResponseType(typeof(MoviesResponse), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll(
             [FromQuery] GetAllMoviesRequest request,
@@ -159,6 +168,8 @@ namespace MoviesAPI.Controllers.V1
             }
 
             MovieResponse response = updatedMovie.MapToResponse();
+            
+            await _outputCacheStore.EvictByTagAsync("movies", cancellationToken);
 
             return Ok(response);
         }
@@ -178,6 +189,8 @@ namespace MoviesAPI.Controllers.V1
                 return NotFound();
             }
 
+            await _outputCacheStore.EvictByTagAsync("movies", cancellationToken);
+            
             return Ok();
         }
     }

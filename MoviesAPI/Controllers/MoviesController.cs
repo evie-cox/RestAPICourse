@@ -182,6 +182,8 @@ namespace MoviesAPI.Controllers.V1
             [FromRoute] Guid id,
             CancellationToken cancellationToken)
         {
+            Guid? userId = HttpContext.GetUserId();
+            
             bool deleted = await _movieService.DeleteByIdAsync(id, cancellationToken);
 
             if (!deleted)

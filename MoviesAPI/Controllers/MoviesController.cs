@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MoviesAPI.Auth;
@@ -8,9 +9,10 @@ using MoviesApplication.Services;
 using MoviesContracts.Requests;
 using MoviesContracts.Responses;
 
-namespace MoviesAPI.Controllers
+namespace MoviesAPI.Controllers.V1
 {
     [ApiController]
+    [ApiVersion(1.0)]
     public class MoviesController : ControllerBase
     {
         private readonly IMovieService _movieService;
@@ -30,11 +32,11 @@ namespace MoviesAPI.Controllers
 
             await _movieService.CreateAsync(movie);
 
-            return CreatedAtAction(nameof(Get), new { idOrSlug = movie.Id }, movie);
+            return CreatedAtAction(nameof(Create), new { idOrSlug = movie.Id }, movie);
         }
         
-        [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(Get))]
-        public async Task<IActionResult> Get(
+        [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(GetV1))]
+        public async Task<IActionResult> GetV1(
             [FromRoute] string idOrSlug,
             [FromServices] LinkGenerator linkGenerator,
             CancellationToken cancellationToken)
@@ -55,7 +57,7 @@ namespace MoviesAPI.Controllers
             var movieObj = new { id = movie.Id };
             response.Links.Add(new Link()
             {
-                Href = linkGenerator.GetPathByRouteValues(HttpContext, nameof(Get), values: new { idOrSlug = movie.Id }),
+                Href = linkGenerator.GetPathByRouteValues(HttpContext, nameof(GetV1), values: new { idOrSlug = movie.Id }),
                 Rel = "self",
                 Type = "GET"
             });
@@ -73,6 +75,29 @@ namespace MoviesAPI.Controllers
                 Rel = "self",
                 Type = "DELETE"
             });
+            
+            return Ok(response);
+        }
+        
+        [ApiVersion(2.0)]
+        [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(GetV2))]
+        public async Task<IActionResult> GetV2(
+            [FromRoute] string idOrSlug,
+            [FromServices] LinkGenerator linkGenerator,
+            CancellationToken cancellationToken)
+        {
+            Guid? userId = HttpContext.GetUserId();
+            
+            Movie? movie = Guid.TryParse(idOrSlug, out var id)
+                ? await _movieService.GetByIdAsync(id, userId, cancellationToken)
+                : await _movieService.GetBySlugAsync(idOrSlug, userId, cancellationToken);
+
+            if (movie is null)
+            {
+                return NotFound();
+            }
+
+            MovieResponse response = movie.MapToResponse();
             
             return Ok(response);
         }

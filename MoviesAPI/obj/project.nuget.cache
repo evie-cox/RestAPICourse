@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Ff61w8WWCMI=",
+  "dgSpecHash": "Pa2ouO134AY=",
   "success": true,
   "projectFilePath": "C:\\Users\\EvieCox\\RiderProjects\\RestAPICourse\\MoviesAPI\\MoviesAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\EvieCox\\.nuget\\packages\\asp.versioning.abstractions\\8.1.0\\asp.versioning.abstractions.8.1.0.nupkg.sha512",
+    "C:\\Users\\EvieCox\\.nuget\\packages\\asp.versioning.http\\8.1.0\\asp.versioning.http.8.1.0.nupkg.sha512",
+    "C:\\Users\\EvieCox\\.nuget\\packages\\asp.versioning.mvc\\8.1.0\\asp.versioning.mvc.8.1.0.nupkg.sha512",
     "C:\\Users\\EvieCox\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
     "C:\\Users\\EvieCox\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
     "C:\\Users\\EvieCox\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.0.0\\fluentvalidation.dependencyinjectionextensions.12.0.0.nupkg.sha512",
@@ -12,6 +15,7 @@
     "C:\\Users\\EvieCox\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\EvieCox\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.0-preview.5.25277.114\\microsoft.extensions.dependencyinjection.abstractions.10.0.0-preview.5.25277.114.nupkg.sha512",
     "C:\\Users\\EvieCox\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\EvieCox\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\EvieCox\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.15.1\\microsoft.identitymodel.jsonwebtokens.6.15.1.nupkg.sha512",
     "C:\\Users\\EvieCox\\.nuget\\packages\\microsoft.identitymodel.logging\\6.15.1\\microsoft.identitymodel.logging.6.15.1.nupkg.sha512",
     "C:\\Users\\EvieCox\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.15.1\\microsoft.identitymodel.protocols.6.15.1.nupkg.sha512",

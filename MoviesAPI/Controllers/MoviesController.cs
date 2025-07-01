@@ -25,6 +25,8 @@ namespace MoviesAPI.Controllers.V1
 
         [Authorize(AuthConstants.TrustedMemberPolicyName)]
         [HttpPost(ApiEndpoints.Movies.Create, Name = nameof(Create))]
+        [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ValidationFailureResponse), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create(
             [FromBody] CreateMovieRequest request,
             CancellationToken cancellationToken)
@@ -38,6 +40,8 @@ namespace MoviesAPI.Controllers.V1
         
         [MapToApiVersion(1.0)]
         [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(GetV1))]
+        [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetV1(
             [FromRoute] string idOrSlug,
             [FromServices] LinkGenerator linkGenerator,
@@ -83,6 +87,8 @@ namespace MoviesAPI.Controllers.V1
         
         [MapToApiVersion(2.0)]
         [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(GetV2))]
+        [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetV2(
             [FromRoute] string idOrSlug,
             [FromServices] LinkGenerator linkGenerator,
@@ -105,6 +111,7 @@ namespace MoviesAPI.Controllers.V1
         }
         
         [HttpGet(ApiEndpoints.Movies.GetAll, Name = nameof(GetAll))]
+        [ProducesResponseType(typeof(MoviesResponse), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll(
             [FromQuery] GetAllMoviesRequest request,
             CancellationToken cancellationToken)
@@ -126,6 +133,9 @@ namespace MoviesAPI.Controllers.V1
 
         [Authorize(AuthConstants.TrustedMemberPolicyName)]
         [HttpPut(ApiEndpoints.Movies.Update, Name = nameof(Update))]
+        [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ValidationFailureResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Update(
             [FromRoute] Guid id,
             [FromBody] UpdateMovieRequest request,
@@ -149,6 +159,8 @@ namespace MoviesAPI.Controllers.V1
 
         [Authorize(AuthConstants.AdminUserPolicyName)]
         [HttpDelete(ApiEndpoints.Movies.Delete, Name = nameof(Delete))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(
             [FromRoute] Guid id,
             CancellationToken cancellationToken)

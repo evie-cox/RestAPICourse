@@ -13,6 +13,7 @@ namespace MoviesAPI.Controllers.V1
 {
     [ApiController]
     [ApiVersion(1.0)]
+    [ApiVersion(2.0)]
     public class MoviesController : ControllerBase
     {
         private readonly IMovieService _movieService;
@@ -35,6 +36,7 @@ namespace MoviesAPI.Controllers.V1
             return CreatedAtAction(nameof(Create), new { idOrSlug = movie.Id }, movie);
         }
         
+        [MapToApiVersion(1.0)]
         [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(GetV1))]
         public async Task<IActionResult> GetV1(
             [FromRoute] string idOrSlug,
@@ -79,7 +81,7 @@ namespace MoviesAPI.Controllers.V1
             return Ok(response);
         }
         
-        [ApiVersion(2.0)]
+        [MapToApiVersion(2.0)]
         [HttpGet(ApiEndpoints.Movies.Get, Name = nameof(GetV2))]
         public async Task<IActionResult> GetV2(
             [FromRoute] string idOrSlug,

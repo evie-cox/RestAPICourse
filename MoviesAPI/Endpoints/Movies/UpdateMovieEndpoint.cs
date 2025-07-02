@@ -39,7 +39,8 @@ public static class UpdateMovieEndpoint
 
                 return TypedResults.Ok(response);
             })
-            .WithName(Name);
+            .WithName(Name)
+            .RequireAuthorization(AuthConstants.TrustedMemberPolicyName);
 
         return app;
     }

@@ -33,7 +33,8 @@ public static class GetMovieEndpoint
 
             return TypedResults.Ok(response);
         })
-        .WithName(Name);
+        .WithName(Name)
+        .RequireAuthorization(AuthConstants.TrustedMemberPolicyName);
         
         return app;
     }

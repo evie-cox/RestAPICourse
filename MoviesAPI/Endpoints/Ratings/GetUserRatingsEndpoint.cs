@@ -21,7 +21,8 @@ public static class GetUserRatingsEndpoint
                 
                 return TypedResults.Ok(ratings);
             })
-            .WithName(Name);
+            .WithName(Name)
+            .RequireAuthorization();
         
         return app;
     }

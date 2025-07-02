@@ -36,8 +36,10 @@ public static class GetMovieEndpoint
         .WithName(Name)
         .RequireAuthorization(AuthConstants.TrustedMemberPolicyName)
         .Produces<MovieResponse>(StatusCodes.Status200OK)
-        .Produces(StatusCodes.Status404NotFound);
-        
+        .Produces(StatusCodes.Status404NotFound)
+        .WithApiVersionSet(ApiVersioning.VersionSet)
+        .HasApiVersion(1.0);
+            
         return app;
     }
 }

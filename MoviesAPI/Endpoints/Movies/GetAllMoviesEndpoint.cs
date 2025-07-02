@@ -36,8 +36,38 @@ public static class GetAllMoviesEndpoint
 
             return TypedResults.Ok(moviesReponse);
         })
-        .WithName(Name)
-        .Produces<MoviesResponse>(StatusCodes.Status200OK);
+        .WithName($"{Name}V1")
+        .Produces<MoviesResponse>(StatusCodes.Status200OK)
+        .WithApiVersionSet(ApiVersioning.VersionSet)
+        .HasApiVersion(1.0);
+        
+        app.MapGet(ApiEndpoints.Movies.GetAll, async (
+                [AsParameters] GetAllMoviesRequest request,
+                IMovieService movieService,
+                HttpContext context,
+                CancellationToken cancellationToken = default) =>
+        {
+            Guid? userId = context.GetUserId();
+
+            var options = request
+                .MapToOptions()
+                .WithUser(userId);
+        
+            IEnumerable<Movie> movies = await movieService.GetAllAsync(options, cancellationToken);
+        
+            int movieCount = await movieService.GetCountAsync(options.Title, options.YearOfRelease, cancellationToken);
+
+            MoviesResponse moviesReponse = movies.MapToResponse(
+                request.PageNumber.GetValueOrDefault(PagedRequest.DefaultPageNumber),
+                request.PageSize.GetValueOrDefault(PagedRequest.DefaultPageSize),
+                movieCount);
+
+            return TypedResults.Ok(moviesReponse);
+        })
+        .WithName($"{Name}V2")
+        .Produces<MoviesResponse>(StatusCodes.Status200OK)
+        .WithApiVersionSet(ApiVersioning.VersionSet)
+        .HasApiVersion(2.0);
         
         return app;
     }

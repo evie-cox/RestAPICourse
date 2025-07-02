@@ -22,7 +22,9 @@ public static class DeleteRatingEndpoint
                 return result ? TypedResults.Ok() : Results.NotFound();
             })
             .WithName(Name)
-            .RequireAuthorization();
+            .RequireAuthorization()
+            .Produces(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status404NotFound);
         
         return app;
     }

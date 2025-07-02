@@ -1328,7 +1328,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Asp.Versioning.Mvc >= 8.1.0",
+      "Asp.Versioning.Http >= 8.1.0",
       "Asp.Versioning.Mvc.ApiExplorer >= 8.1.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.3",
       "MoviesApplication >= 1.0.0",
@@ -1393,7 +1393,7 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "Asp.Versioning.Mvc": {
+          "Asp.Versioning.Http": {
             "target": "Package",
             "version": "[8.1.0, )"
           },

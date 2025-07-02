@@ -29,7 +29,9 @@ public static class CreateMovieEndpoint
             
             return TypedResults.CreatedAtRoute(response, GetMovieEndpoint.Name, new { idOrSlug = response.Id });
         })
-        .WithName(Name);
+        .WithName(Name)
+        .Produces<MovieResponse>(StatusCodes.Status201Created)
+        .Produces<ValidationFailureResponse>(StatusCodes.Status400BadRequest);
 
         return app;
     }

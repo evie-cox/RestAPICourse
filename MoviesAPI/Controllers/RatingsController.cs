@@ -1,4 +1,4 @@
-using Asp.Versioning;
+/*using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MoviesAPI.Auth;
@@ -65,4 +65,4 @@ public class RatingsController : ControllerBase
         
         return Ok(ratingsResponse);
     }
-}
+}*/

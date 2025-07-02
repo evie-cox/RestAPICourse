@@ -1,6 +1,7 @@
 using MoviesAPI.Auth;
 using MoviesApplication.Models;
 using MoviesApplication.Services;
+using MoviesContracts.Responses;
 
 namespace MoviesAPI.Endpoints.Ratings;
 
@@ -22,7 +23,8 @@ public static class GetUserRatingsEndpoint
                 return TypedResults.Ok(ratings);
             })
             .WithName(Name)
-            .RequireAuthorization();
+            .RequireAuthorization()
+            .Produces<MovieRatingResponse>(StatusCodes.Status200OK);
         
         return app;
     }

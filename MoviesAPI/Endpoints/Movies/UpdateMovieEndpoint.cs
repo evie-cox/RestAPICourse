@@ -23,7 +23,7 @@ public static class UpdateMovieEndpoint
                 CancellationToken cancellationToken = default) =>
             {
                 Guid? userId = context.GetUserId();
-            
+
                 Movie movie = request.MapToMovie(id);
 
                 Movie? updatedMovie = await movieService.UpdateAsync(movie, userId, cancellationToken);
@@ -34,13 +34,16 @@ public static class UpdateMovieEndpoint
                 }
 
                 MovieResponse response = updatedMovie.MapToResponse();
-            
+
                 await outputCacheStore.EvictByTagAsync("movies", cancellationToken);
 
                 return TypedResults.Ok(response);
             })
             .WithName(Name)
-            .RequireAuthorization(AuthConstants.TrustedMemberPolicyName);
+            .RequireAuthorization(AuthConstants.TrustedMemberPolicyName)
+            .Produces<MovieResponse>(StatusCodes.Status200OK)
+            .Produces<ValidationFailureResponse>(StatusCodes.Status400BadRequest)
+            .Produces(StatusCodes.Status404NotFound);
 
         return app;
     }

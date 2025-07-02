@@ -1,4 +1,5 @@
-﻿using Asp.Versioning;
+﻿/*
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -146,7 +147,7 @@ namespace MoviesAPI.Controllers.V1
             MoviesResponse moviesReponse = movies.MapToResponse(request.PageNumber, request.PageSize, movieCount);
 
             return Ok(moviesReponse);
-        }*/
+        }#1#
 
         [Authorize(AuthConstants.TrustedMemberPolicyName)]
         [HttpPut(ApiEndpoints.Movies.Update, Name = nameof(Update))]
@@ -197,3 +198,4 @@ namespace MoviesAPI.Controllers.V1
         }
     }
 }
+*/

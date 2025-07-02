@@ -50,7 +50,7 @@ namespace MoviesApplication.Repositories.Internal
                     select m.*, round(avg(r.rating), 1) as rating, myr.rating as userrating
                     from movies m 
                     left join ratings r on m.Id = r.MovieId
-                    left join ratings myr on r.Id = myr.MovieId
+                    left join ratings myr on m.Id = myr.MovieId
                       and myr.userId = @userId
                     where id = @id
                     group by id, userrating

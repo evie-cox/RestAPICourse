@@ -76,8 +76,8 @@ namespace MoviesAPI.Mapping
                 SortField = request.SortBy?.Trim('+', '-'),
                 SortOrder = request.SortBy is null ? SortOrder.Unsorted
                     : request.SortBy.StartsWith("-") ? SortOrder.Descending : SortOrder.Ascending,
-                PageNumber = request.PageNumber,
-                PageSize = request.PageSize,
+                PageNumber = request.PageNumber.GetValueOrDefault(PagedRequest.DefaultPageNumber),
+                PageSize = request.PageSize.GetValueOrDefault(PagedRequest.DefaultPageSize),
             };
         }
 

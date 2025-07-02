@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MoviesAPI.Auth;
+using MoviesAPI.Endpoints;
 using MoviesAPI.Health;
 using MoviesAPI.Mapping;
 using MoviesAPI.Swagger;
@@ -75,7 +76,7 @@ builder.Services.AddOutputCache(x =>
     );
 });
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers(); Removed for migrating to minimal api
 
 builder.Services.AddHealthChecks()
     .AddCheck<DatabaseHealthCheck>(DatabaseHealthCheck.Name);
@@ -113,7 +114,8 @@ app.UseAuthorization();
 app.UseOutputCache();
 
 app.UseMiddleware<ValidationMappingMiddleware>();
-app.MapControllers();
+//app.MapControllers(); Removed for migrating to minimal api
+app.MapApiEndpoints();
 
 var dbInitialiser = app.Services.GetService<DBInitializer>();
 await dbInitialiser.InitializeAsync();

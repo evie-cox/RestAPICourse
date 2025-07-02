@@ -2,9 +2,9 @@ namespace MoviesContracts.Requests;
 
 public class GetAllMoviesRequest : PagedRequest
 {
-    public required string? Title { get; init; }
+    public string? Title { get; init; }
     
-    public required int? YearOfRelease { get; init; }
+    public int? YearOfRelease { get; init; }
     
-    public required string? SortBy { get; init; }
+    public string? SortBy { get; init; }
 }

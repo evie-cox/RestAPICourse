@@ -54,7 +54,7 @@ public class AuthTokenProvider
     private static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
     {
         DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-        date: dateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+        dateTime.AddSeconds(unixTimeStamp).ToLocalTime();
         return dateTime;
     }
 }

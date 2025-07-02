@@ -42,7 +42,9 @@ namespace MoviesAPI.Controllers.V1
 
             await _outputCacheStore.EvictByTagAsync("movies", cancellationToken);
             
-            return CreatedAtAction(nameof(Create), new { idOrSlug = movie.Id }, movie);
+            MovieResponse response = movie.MapToResponse();
+            
+            return CreatedAtAction(nameof(Create), new { idOrSlug = response.Id }, response);
         }
         
         [MapToApiVersion(1.0)]
@@ -120,7 +122,7 @@ namespace MoviesAPI.Controllers.V1
             return Ok(response);
         }
         
-        [HttpGet(ApiEndpoints.Movies.GetAll, Name = nameof(GetAll))]
+        /*[HttpGet(ApiEndpoints.Movies.GetAll, Name = nameof(GetAll))]
         [OutputCache(PolicyName = "MovieCache")]
         //[ResponseCache(Duration = 30,
         //               VaryByQueryKeys = new[] { "title", "yearOfRelease", "sortBy", "pageNumber", "pageSize" },
@@ -144,7 +146,7 @@ namespace MoviesAPI.Controllers.V1
             MoviesResponse moviesReponse = movies.MapToResponse(request.PageNumber, request.PageSize, movieCount);
 
             return Ok(moviesReponse);
-        }
+        }*/
 
         [Authorize(AuthConstants.TrustedMemberPolicyName)]
         [HttpPut(ApiEndpoints.Movies.Update, Name = nameof(Update))]
@@ -182,8 +184,6 @@ namespace MoviesAPI.Controllers.V1
             [FromRoute] Guid id,
             CancellationToken cancellationToken)
         {
-            Guid? userId = HttpContext.GetUserId();
-            
             bool deleted = await _movieService.DeleteByIdAsync(id, cancellationToken);
 
             if (!deleted)

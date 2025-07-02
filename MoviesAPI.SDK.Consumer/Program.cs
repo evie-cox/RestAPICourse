@@ -1,12 +1,17 @@
 ﻿using System.Text.Json;
+using Microsoft.Extensions.DependencyInjection;
 using MoviesAPI.SDK;
 using MoviesContracts.Requests;
 using Refit;
 
-var moviesApi = RestService.For<IMoviesApi>("https://localhost:44375");
+var services = new ServiceCollection();
+services.AddRefitClient<IMoviesApi>()
+    .ConfigureHttpClient(x => 
+        x.BaseAddress = new Uri("http://localhost:5236"));
 
-// var movie = await moviesApi.GetMovieAsync("about-a-boy-2002");
-// Console.WriteLine(JsonSerializer.Serialize(movie));
+var provider = services.BuildServiceProvider();
+
+var moviesApi = provider.GetRequiredService<IMoviesApi>();
 
 var request = new GetAllMoviesRequest
 {
